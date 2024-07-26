@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+    <header th:replace="fragments/header :: header"></header>
+    <main class="container mt-5">
+        <h2 class="text-center">Courses</h2>
+        <div class="row mt-4">
+            <div class="col-md-4" th:each="course : ${courses}">
+                <div class="card mb-4 shadow-sm">
+                    <img th:src="@{/images/course-placeholder.jpg}" class="card-img-top" alt="Course Image">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${course.title}">Course Title</h5>
+                        <p class="card-text" th:text="${course.description}">Course Description</p>
+                        <a th:href="@{/courses/{id}(id=${course.id})}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

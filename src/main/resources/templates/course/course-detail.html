@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+    <header th:replace="fragments/header :: header"></header>
+    <main class="container mt-5">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="text-center" th:text="${course.title}">Course Title</h2>
+                <p class="lead" th:text="${course.description}">Course Description</p>
+                <div class="mt-4">
+                    <h4>Course Content</h4>
+                    <ul>
+                        <li th:each="lesson : ${course.lessons}" th:text="${lesson.title}">Lesson Title</li>
+                    </ul>
+                </div>
+                <div class="mt-4">
+                    <h4>Instructor</h4>
+                    <p th:text="${course.instructor.name}">Instructor Name</p>
+                </div>
+                <div class="mt-4">
+                    <a th:href="@{/courses}" class="btn btn-secondary">Back to Courses</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>
